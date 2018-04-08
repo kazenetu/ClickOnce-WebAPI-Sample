@@ -48,7 +48,7 @@ namespace ClickOnceTest
             {
                 // ClickOnce実行時のURL
                 var updateLocation = ApplicationDeployment.CurrentDeployment.UpdateLocation;
-                url = string.Format("{0}://{1}:{2}/api/", updateLocation.Scheme, updateLocation.Host, updateLocation.Port);
+                url = string.Format("{0}://{1}:{2}/", updateLocation.Scheme, updateLocation.Host, updateLocation.Port);
             }
             else
             {
@@ -56,11 +56,15 @@ namespace ClickOnceTest
                 var args = Environment.GetCommandLineArgs();
                 if (args.Length >= 2)
                 {
-                    url = args[1] + "api/";
+                    url = args[1];
+                    if (url[url.Length - 1] != '/')
+                    {
+                        url += "/";
+                    }
                 }
             }
 
-            return url;
+            return url +  "api/";
         }
 
     }
