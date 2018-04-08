@@ -25,11 +25,11 @@ namespace ClickOnceTest
             var rootURL = getWebApiRootAddress();
 
             // Getメソッド発行
-            var results = HttpConnectLib.Get<List<string>>(string.Format("{0}/test",rootURL));
+            var results = HttpConnectLib.Get<List<string>>(string.Format("{0}/test", rootURL));
 
             // 結果を表示
             var sb = new StringBuilder();
-            foreach(var item in results)
+            foreach (var item in results)
             {
                 sb.AppendLine(item.ToString());
             }
@@ -56,7 +56,7 @@ namespace ClickOnceTest
                 var args = Environment.GetCommandLineArgs();
                 if (args.Length >= 2)
                 {
-                    url = args[1]+ "api/";
+                    url = args[1] + "api/";
                 }
             }
 
